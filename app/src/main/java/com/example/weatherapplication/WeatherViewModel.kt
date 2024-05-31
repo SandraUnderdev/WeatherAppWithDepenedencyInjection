@@ -6,8 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.weatherapplication.datamodel.WeatherResponseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WeatherViewModel(
+class WeatherViewModel  @Inject constructor (
     private val repo: Repo
 ) : ViewModel() {
     val weatherDetailLiveData = MutableLiveData<WeatherResponseModel>()

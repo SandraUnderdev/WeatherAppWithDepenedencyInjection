@@ -1,5 +1,6 @@
 package com.example.weatherapplication
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,10 +15,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.example.weatherapplication.di.ApplicationClass
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var repo: Repo
-    private lateinit var weatherViewModelFactory: WeatherViewModelFactory
+  //  private lateinit var repo: Repo
+    @Inject
+    lateinit var weatherViewModelFactory: WeatherViewModelFactory
     private lateinit var weatherViewModel: WeatherViewModel
     private lateinit var loader: ProgressBar
 
@@ -31,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        (application as ApplicationClass).applicationComponent.inject(this)
 
         init()
 
@@ -71,8 +78,8 @@ class MainActivity : AppCompatActivity() {
     }
 
    private fun init() {
-       repo = Repo(RetrofitBuilder.getInstance())
-       weatherViewModelFactory = WeatherViewModelFactory(repo)
+//       repo = Repo(RetrofitBuilder.getInstance())
+//       weatherViewModelFactory = WeatherViewModelFactory(repo)
        weatherViewModel = ViewModelProvider(this, weatherViewModelFactory).get(WeatherViewModel::class.java)
 
        loader = findViewById(R.id.loader)

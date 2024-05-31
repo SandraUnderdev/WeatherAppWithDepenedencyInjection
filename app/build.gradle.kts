@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -50,7 +51,18 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.10.0")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
-    implementation("org.jetbrains:kotlinx:kotlinx-coroutines:1.7.1")
+    //implementation("org.jetbrains:kotlinx:kotlinx-coroutines:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
-    implementation("com.github.bumptech.glide:glide2.15.1")
+    //implementation("com.github.bumptech.glide:glide2.15.1")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+//
+//    implementation("com.google.dagger:hilt-android:2:46")
+//    kapt "com.google.dagger:hilt-compiler:2.46"
+
+    implementation("com.google.dagger:hilt-android:2.46")
+    kapt( "com.google.dagger:hilt-compiler:2.46")
+
+
 }
